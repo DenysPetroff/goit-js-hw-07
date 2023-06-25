@@ -22,19 +22,23 @@ function handlerClick(evt) {
     // originalImg = evt.target.closest('.gallery__link').href;
     originalImg = evt.target.dataset.source;
 
-    const instance = basicLightbox.create(`
-    <img src="${originalImg}" width="800" height="600">`)
-
+  const instance = basicLightbox.create(`
+    <img src="${originalImg}" width="800" height="600">`, {
+    onShow: (instance) => {
+      document.addEventListener('keydown', handlerEsc)
+    },
+    onClose: (instance) => {
+      document.removeEventListener('keydown', handlerEsc)
+    }
+  } )
+    
     instance.show();
     
-    if (instance.show()) {
-
-    document.addEventListener('keydown', handlerEsc);
+   
+  
     
     function handlerEsc(evt) {
         if (evt.code === 'Escape') {
             instance.close();
         }
-    }
-};
-}
+    }}
