@@ -12,6 +12,6 @@ const markup = galleryItems.map(({ preview, original, description }) => `<li cla
 
 list.insertAdjacentHTML('beforeend', markup);
  
-        const gallery = new SimpleLightbox('.gallery a', { captionsData: `alt`, captionDelay: 250, });
-        gallery.open();
+   const gallery = new SimpleLightbox('.gallery a', { captionsData: `alt`, captionDelay: 250, });
+        
       
